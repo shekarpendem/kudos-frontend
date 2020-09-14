@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Employees</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Kudos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees | async">
+          <td>{{employee.firstName}} {{employee.lastName}}</td>
+          <td>{{employee.emailId}}</td>
+          <td>
+              <div *ngFor="let kudo of employee.kudoList">
+                <span>{{kudo.kudoComment}}</span><br/>
+                <span>~ {{kudo.kudoFrom}}</span>
+              </div>
+              <!-- <button (click)="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 10px">Update</button> -->
+              <!--
+              <button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
+              
+              <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+              -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

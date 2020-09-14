@@ -1,0 +1,21 @@
+<h3>Add Kudos</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Kudo From</label>
+      <input type="text" readonly class="form-control" id="kudoFrom" [(ngModel)]="kudo.kudoFrom" name="kudoFrom">
+    </div>
+    <div class="form-group">
+      <label for="eid">Employee:</label>
+      <select [(ngModel)]="kudo.eid" name="eid" class="form-control">
+        <option disabled selected>Select Employee</option>
+        <option *ngFor="let employee of employeeList" [ngValue]="employee.id">{{employee.firstName}} {{employee.lastName}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="name">Comments</label>
+      <textarea class="form-control" id="kudoComment" required [(ngModel)]="kudo.kudoComment" name="kudoComment"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
