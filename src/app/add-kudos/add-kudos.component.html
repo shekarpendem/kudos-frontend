@@ -1,21 +1,30 @@
-<h3>Add Kudos</h3>
-<div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Kudo From</label>
-      <input type="text" readonly class="form-control" id="kudoFrom" [(ngModel)]="kudo.kudoFrom" name="kudoFrom">
+<div class="row">
+  <div class="col">
+    <div class=" p-3">
+      <h4>Add Kudos</h4>
+      <p style="background-color:lightred">Welcome to Kudos to You, a great platform to give and receive kudos in your organization. We hope you will enjoy exchanging mutual appreciation! Use the main navigation to view and add kudos.</p>
     </div>
-    <div class="form-group">
-      <label for="eid">Employee:</label>
-      <select [(ngModel)]="kudo.eid" name="eid" class="form-control">
-        <option disabled selected>Select Employee</option>
-        <option *ngFor="let employee of employeeList" [ngValue]="employee.id">{{employee.firstName}} {{employee.lastName}}</option>
-      </select>
+  </div>
+  <div class="col border-left">
+    <div [hidden]="submitted" >
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Kudo From</label>
+          <input type="text" readonly class="form-control" id="kudoFrom" [(ngModel)]="kudo.kudoFrom" name="kudoFrom">
+        </div>
+        <div class="form-group">
+          <label for="eid">Employee:</label>
+          <select [(ngModel)]="kudo.eid" name="eid" class="form-control">
+            <option disabled selected>Select Employee</option>
+            <option *ngFor="let employee of employeeList" [ngValue]="employee.id">{{employee.firstName}} {{employee.lastName}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Comments</label>
+          <textarea class="form-control" id="kudoComment" required [(ngModel)]="kudo.kudoComment" name="kudoComment"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="name">Comments</label>
-      <textarea class="form-control" id="kudoComment" required [(ngModel)]="kudo.kudoComment" name="kudoComment"></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+  </div>
 </div>
