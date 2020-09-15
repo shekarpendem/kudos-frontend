@@ -12,3 +12,13 @@
     text-align: center;
     color: white;
 }
+.btn-success {
+    color: #fff;
+    background-color: #689F38;
+    border-color: #689F38;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #388E3C;
+    border-color: #388E3C;
+}
