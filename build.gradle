@@ -1,0 +1,28 @@
+plugins {
+    id 'jp.classmethod.aws.cloudformation' version '0.41'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'rthirumal1999'
+
+import com.amazonaws.services.cloudformation.model.Capability
+
+aws {
+    region = findProperty('region') ?: 'us-east-1'
+}
+
+cloudFormation {
+    stackName "kudos-frontend-stack"
+    stackParams([
+            SubnetID: findProperty('subnetId') ?: 'subnet-378eaa09',
+            ServiceName: 'kudos-frontend',
+            ServiceVersion: '0.1.0-SNAPSHOT',
+            DockerHubUsername: dockerHubUsernameProperty
+    ])
+    templateFile project.file("ecs.yml")
+}
+

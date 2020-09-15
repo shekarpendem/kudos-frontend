@@ -25,7 +25,7 @@ pipeline {
      stage('Building image') {
        steps{
          script {
-           dockerImage = docker.build dockerRegistry + ":$BUILD_NUMBER"
+           dockerImage = docker.build dockerRegistry + ":0.1.0-SNAPSHOT"
          }
        }
      }
@@ -40,8 +40,19 @@ pipeline {
      }
      stage('Remove Unused docker image') {
        steps{
-         sh "docker rmi $dockerRegistry:$BUILD_NUMBER"
+         sh "docker rmi $dockerRegistry:0.1.0-SNAPSHOT"
        }
      }
+    stage('Deploy to AWS') {
+        environment {
+            DOCKER_HUB_LOGIN = credentials('docker-hub')
+        }
+        steps {
+            withAWS(credentials: 'aws-credentials', region: env.REGION) {
+                sh './gradlew awsCfnMigrateStack awsCfnWaitStackComplete -PsubnetId=$SUBNET_ID -PdockerHubUsername=$DOCKER_HUB_LOGIN_USR'
+            }
+        }
+    }
    }
- }
+}
+
