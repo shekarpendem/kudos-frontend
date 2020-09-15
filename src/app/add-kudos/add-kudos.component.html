@@ -1,15 +1,16 @@
-<div class="row">
+<div class="row mt-3">
   <div class="col">
     <div class=" p-3">
       <h4>Add Kudos</h4>
-      <p style="background-color:lightred">Welcome to Kudos to You, a great platform to give and receive kudos in your organization. We hope you will enjoy exchanging mutual appreciation! Use the main navigation to view and add kudos.</p>
+      <p>		  
+		  Welcome to Kudos to You, a great platform to give and receive kudos in your organization. We hope you will enjoy exchanging mutual appreciation! Use the main navigation to view and add kudos.</p>
     </div>
   </div>
-  <div class="col border-left">
+  <div class="col border-left pt-3 pb-3">
     <div [hidden]="submitted" >
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="name">Kudo From</label>
+          <label for="name">Kudo from:</label>
           <input type="text" readonly class="form-control" id="kudoFrom" [(ngModel)]="kudo.kudoFrom" name="kudoFrom">
         </div>
         <div class="form-group">
