@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  baseUrl: 'http://52.87.235.141:8080/kudos-backend'  
+  production: true,
+  baseUrl: 'http://54.89.73.64:8080/kudos-backend'
 };
